@@ -97,7 +97,7 @@
           
           $animate.enabled(true); // re-enable animation
           
-          // Apply flip.js to the cards in the DOM
+          // Apply flip to the cards in the DOM
           let $card = $(".app__cards-container__card");
           $card.flip({
             axis: 'y',
@@ -131,7 +131,7 @@
         selected1 = card;
         
         // Update UI
-        $("#card-" + card.id).flip(true); // use flip.js api
+        $("#card-" + card.id).flip(true); // use flip api
         
         if (selected1 && selected2 && selected1.type === selected2.type) {
           // We found a match
@@ -165,7 +165,7 @@
                 }
               });
               
-              $("#card-" + id).flip(false); // use flip.js api
+              $("#card-" + id).flip(false); // use flip api
               
             }, 800);
           })(id);

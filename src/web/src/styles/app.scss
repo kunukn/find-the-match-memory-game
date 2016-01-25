@@ -82,6 +82,7 @@ button {
 
     &__card {
       display: inline-block;      
+      user-select: none;
       width: $card-size;
       height: $card-size;
       @media(min-width: $device-bigger){
