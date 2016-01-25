@@ -1,2 +1,2 @@
-# find-the-match-memory-game
+# Find the match memory game
 Memory game where you flip cards
