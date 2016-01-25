@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find the match memory game</title>
+    <link rel="stylesheet" href="assets/styles/app.css?v=1">
+</head>
+
+<body>
+    <main class="app" ng-app="app" ng-controller="appController" ng-cloak>
+        <div class="app__hud">
+            <div class="app__hud__game-info" ng-hide="gameCompleted">Find the match</div>
+            <div class="app__hud__game-completed" ng-show="gameCompleted">
+                Congratulations!
+            </div>
+            <div class="app__hud__game-status">clicks: {{clickCount}}, cards: {{cardsLeft}}</div>
+            <button ng-click="restart()" class="app__hud__btn-restart">Restart</button>
+        </div>
+        <div class="app__cards-container">
+            <div class="app__cards-container__card" role="button" ng-repeat="card in list" id="{{ 'card-' + card.id }}">
+                <div class="front app__cards-container__card__front" ng-click="click(card, $index)"> {{card.isKnown ? "" : "?"}}</div>
+                <div class="back app__cards-container__card__back">
+                    <span ng-class="card.theme">{{card.icon}}</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/flip/dist/jquery.flip.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="assets/scripts/app.js?v=1"></script>
+</body>
+
+</html>
