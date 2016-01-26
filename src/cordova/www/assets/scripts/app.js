@@ -95,7 +95,7 @@
 
                 $timeout(function () {
                     $scope.appReady = true; // wait until flip is done                     
-                }, 100);
+                }, 200);
 
                 //showAllCards(); // debug
                 $animate.enabled(true); // re-enable animation                                  

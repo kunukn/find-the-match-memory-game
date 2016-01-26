@@ -156,6 +156,7 @@ button {
         transition: opacity 1s;
         text-align: center;
         line-height: 60px;
+        visibility: hidden;
         font-size: 40px; }
         @media (min-width: 600px) {
           .app__cards-container__card__back {
@@ -163,6 +164,8 @@ button {
         @media (min-width: 600px) {
           .app__cards-container__card__back {
             font-size: 80px; } }
+        .app__cards-container__card__back.app-ready {
+          visibility: visible; }
         .app__cards-container__card__back > span {
           display: block;
           animation: back-cover 2s ease-in-out alternate infinite; }

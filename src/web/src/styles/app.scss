@@ -136,7 +136,7 @@ button {
                 transition: opacity 1s;
                 text-align: center;
                 line-height: $card-size;
-                //visibility: hidden;
+                visibility: hidden;
                 @media(min-width: $device-bigger) {
                     line-height: $card-size-bigger-device;
                 }
@@ -145,7 +145,7 @@ button {
                     font-size: 80px;
                 }
                 &.app-ready {
-                    //visibility: visible;
+                    visibility: visible;
                 }
                 > span {
                     display: block;

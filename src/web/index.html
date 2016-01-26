@@ -26,7 +26,7 @@
                 <div class="front app__cards-container__card__front" ng-click="click(card, $index)" ng-swipe-left="click(card, $index)" ng-swipe-right="click(card, $index)">
                     <span>{{card.isKnown ? "" : "?"}}</span>
                 </div>
-                <div class="back app__cards-container__card__back" xng-class="{'app-ready': appReady}">
+                <div class="back app__cards-container__card__back" ng-class="{'app-ready': appReady}">
                     <span ng-class="card.theme">{{card.icon}}</span>
                 </div>
             </div>
