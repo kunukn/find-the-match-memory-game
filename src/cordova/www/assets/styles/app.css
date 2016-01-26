@@ -90,7 +90,7 @@ button {
       margin: 5px;
       overflow: hidden;
       -webkit-tap-highlight-color: transparent;
-      animation: intro-in .3s forwards;
+      animation: intro-in 1s;
       width: 60px;
       height: 60px; }
       @media (min-width: 600px) {
@@ -129,6 +129,15 @@ button {
         animation-delay: 10s; }
       .app__cards-container__card:nth-child(16) .front > span {
         animation-delay: 10.66667s; }
+      .app__cards-container__card.ng-leave {
+        opacity: 1;
+        transform: scale(1, 1);
+        transition: 2s ease-in-out; }
+      .app__cards-container__card.ng-leave.ng-leave-active {
+        opacity: .1;
+        width: 0;
+        margin: 0;
+        transform: scale(0, 0); }
       .app__cards-container__card__front {
         text-align: center;
         line-height: 60px;
@@ -147,7 +156,6 @@ button {
         transition: opacity 1s;
         text-align: center;
         line-height: 60px;
-        visibility: hidden;
         font-size: 40px; }
         @media (min-width: 600px) {
           .app__cards-container__card__back {
@@ -155,8 +163,6 @@ button {
         @media (min-width: 600px) {
           .app__cards-container__card__back {
             font-size: 80px; } }
-        .app__cards-container__card__back.app-ready {
-          visibility: visible; }
         .app__cards-container__card__back > span {
           display: block;
           animation: back-cover 2s ease-in-out alternate infinite; }
@@ -173,17 +179,6 @@ button {
   100% {
     color: lightblue; } }
 
-.ng-leave {
-  opacity: 1;
-  transform: scale(1, 1);
-  transition: 2s ease-in-out; }
-
-.ng-leave.ng-leave-active {
-  opacity: .1;
-  width: 0;
-  margin: 0;
-  transform: scale(0, 0); }
-
 .ng-enter-stagger {
   transition-delay: 0.1s;
   transition-duration: 0s; }
@@ -194,5 +189,6 @@ button {
 
 @keyframes intro-in {
   0% {
-    transform: scale(0, 0); }
-  100% { } }
+    opacity: .5; }
+  100% {
+    opacity: 1; } }

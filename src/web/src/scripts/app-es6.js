@@ -99,6 +99,7 @@
                     });
                 }
 
+
                 shuffleArray(list); // randomize card on the board
 
                 // Update state
@@ -127,13 +128,13 @@
                         // Callback
                     });
 
-                    //showAllCards(); // debug
-                    $animate.enabled(true); // re-enable animation                    
-                    
+                                    
                     $timeout(() => {
                         $scope.appReady = true;  // wait until flip is done                       
                     }, 100);
-                
+
+                    //showAllCards(); // debug
+                    $animate.enabled(true); // re-enable animation                                    
                 });
             }
 

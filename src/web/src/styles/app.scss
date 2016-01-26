@@ -86,9 +86,9 @@ button {
             display: inline-block;
             user-select: none;
             margin: 5px;
-            overflow: hidden;            
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            animation: intro-in .3s forwards;
+            overflow: hidden;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);            
+            animation: intro-in 1s;
             width: $card-size;
             height: $card-size;
             @media(min-width: $device-bigger) {
@@ -104,6 +104,17 @@ button {
                     }
                 }
             }
+            &.ng-leave {
+                opacity: 1;
+                transform: scale(1, 1);
+                transition: 2s ease-in-out;
+            }
+            &.ng-leave.ng-leave-active {
+                opacity: .1;
+                width: 0;
+                margin: 0;
+                transform: scale(0, 0);
+            }
             &__front {
                 text-align: center;
                 line-height: $card-size;
@@ -111,7 +122,7 @@ button {
                     line-height: $card-size-bigger-device;
                 }
                 background: rgba(255, 255, 255, .1);
-                cursor: pointer;                
+                cursor: pointer;
                 > span {
                     display: block;
                     font-weight: 700;
@@ -122,10 +133,10 @@ button {
                 }
             }
             &__back {
-                transition: opacity 1s;                
+                transition: opacity 1s;
                 text-align: center;
-                line-height: $card-size;                
-                visibility: hidden;
+                line-height: $card-size;
+                //visibility: hidden;
                 @media(min-width: $device-bigger) {
                     line-height: $card-size-bigger-device;
                 }
@@ -133,8 +144,8 @@ button {
                 @media(min-width: $device-bigger) {
                     font-size: 80px;
                 }
-                &.app-ready {      
-                    visibility: visible;
+                &.app-ready {
+                    //visibility: visible;
                 }
                 > span {
                     display: block;
@@ -156,32 +167,21 @@ button {
 
 @keyframes front-cover {
     0% {
-        color: white;        
+        color: white;
     }
     100% {
-        color: lightblue;        
+        color: lightblue;
     }
 }
 
-// ngAnimate
-.ng-leave {
-    opacity: 1;
-    transform: scale(1, 1);
-    transition: 2s ease-in-out;
-}
-.ng-leave.ng-leave-active {
-    opacity: .1;
-    width: 0;
-    margin: 0;
-    transform: scale(0, 0);
+
+.ng-enter {
+    // anim is disabled in code    
 }
 
-.ng-enter {        
-    // anim is disabled here
-}
 .ng-enter.ng-enter-active,
-{    
-    // anim is disabled here
+{
+    // anim is disabled in code
 }
 
 .ng-enter-stagger {
@@ -196,9 +196,9 @@ button {
 
 @keyframes intro-in {
     0% {        
-        //background: rgba(lightblue, .1); 
-        transform: scale(.0, .0);
+        opacity: .5;
     }
-    100% {        
+    100% {
+        opacity: 1;
     }
 }
