@@ -38,3 +38,7 @@ node_modules
 
 #bower
 bower_components/
+
+#Cordova android
+cordova/platforms/
+cordova/plugins/
