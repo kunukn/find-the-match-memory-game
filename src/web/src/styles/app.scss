@@ -49,7 +49,7 @@ button {
 .app {
     display: block;
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 1.5s;
     color: white;
     &.app-ready {
         opacity: 1;
@@ -88,7 +88,7 @@ button {
             margin: 5px;
             overflow: hidden;            
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            animation: intro-in 1s forwards;
+            animation: intro-in .3s forwards;
             width: $card-size;
             height: $card-size;
             @media(min-width: $device-bigger) {
@@ -125,6 +125,7 @@ button {
                 transition: opacity 1s;                
                 text-align: center;
                 line-height: $card-size;                
+                visibility: hidden;
                 @media(min-width: $device-bigger) {
                     line-height: $card-size-bigger-device;
                 }
@@ -132,7 +133,8 @@ button {
                 @media(min-width: $device-bigger) {
                     font-size: 80px;
                 }
-                &.app-ready {                    
+                &.app-ready {      
+                    visibility: visible;
                 }
                 > span {
                     display: block;
@@ -175,9 +177,11 @@ button {
 }
 
 .ng-enter {        
+    // anim is disabled here
 }
 .ng-enter.ng-enter-active,
 {    
+    // anim is disabled here
 }
 
 .ng-enter-stagger {
@@ -192,7 +196,8 @@ button {
 
 @keyframes intro-in {
     0% {        
-        background: rgba(lightblue, .1);        
+        //background: rgba(lightblue, .1); 
+        transform: scale(.0, .0);
     }
     100% {        
     }

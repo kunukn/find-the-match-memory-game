@@ -33,6 +33,7 @@
         // This is a prototype, everything is in this controller.
         // For cleaner code you probably would refactor stuff out from here.
 
+        var $app = $(".app");
         $timeout(function () {
             // Angular DOM has finished rendering
             $scope.appReady = true;
@@ -46,9 +47,10 @@
 
         function startNewGame() {
 
-            shuffleArray(icons); // randomize displayed icons       
-
             $animate.enabled(false); // disable remove animation
+            $scope.appReady = false;
+
+            shuffleArray(icons); // randomize displayed icons       
 
             var list = [],
                 cardCount = 16;
@@ -81,19 +83,22 @@
             $timeout(function () {
                 // Angular DOM has finished rendering
 
-                $animate.enabled(true); // re-enable animation
-
-                // Apply flip to the cards in the DOM
-                var $card = $(".app__cards-container__card");
+                // Apply flip to the cards in the DOM                   
+                var $card = $app.find(".app__cards-container__card");
                 $card.flip({
                     axis: 'y',
                     trigger: 'manual',
                     reverse: true
                 }, function () {
-                    //callback
+                    // Callback
                 });
 
                 //showAllCards(); // debug
+                $animate.enabled(true); // re-enable animation                   
+
+                $timeout(function () {
+                    $scope.appReady = true; // wait until flip is done                     
+                }, 100);
             });
         }
 

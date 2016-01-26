@@ -57,7 +57,7 @@ button {
 .app {
   display: block;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1.5s;
   color: white; }
   .app.app-ready {
     opacity: 1; }
@@ -90,7 +90,7 @@ button {
       margin: 5px;
       overflow: hidden;
       -webkit-tap-highlight-color: transparent;
-      animation: intro-in 1s forwards;
+      animation: intro-in .3s forwards;
       width: 60px;
       height: 60px; }
       @media (min-width: 600px) {
@@ -147,6 +147,7 @@ button {
         transition: opacity 1s;
         text-align: center;
         line-height: 60px;
+        visibility: hidden;
         font-size: 40px; }
         @media (min-width: 600px) {
           .app__cards-container__card__back {
@@ -154,6 +155,8 @@ button {
         @media (min-width: 600px) {
           .app__cards-container__card__back {
             font-size: 80px; } }
+        .app__cards-container__card__back.app-ready {
+          visibility: visible; }
         .app__cards-container__card__back > span {
           display: block;
           animation: back-cover 2s ease-in-out alternate infinite; }
@@ -191,5 +194,5 @@ button {
 
 @keyframes intro-in {
   0% {
-    background: rgba(173, 216, 230, 0.1); }
+    transform: scale(0, 0); }
   100% { } }
