@@ -1,8 +1,11 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   outline: none; }
 
-html, body {
+html,
+body {
   height: 100%; }
 
 [ng-cloak] {
@@ -80,16 +83,49 @@ button {
         max-width: 600px; } }
     .app__cards-container__card {
       display: inline-block;
-      width: 60px;
-      height: 60px;
+      user-select: none;
       margin: 5px;
       overflow: hidden;
       animation: scale-in .3s forwards;
-      -webkit-tap-highlight-color: transparent; }
+      -webkit-tap-highlight-color: transparent;
+      width: 60px;
+      height: 60px; }
       @media (min-width: 600px) {
         .app__cards-container__card {
           width: 120px;
           height: 120px; } }
+      .app__cards-container__card:nth-child(1) .front > span {
+        animation-delay: 0.66667s; }
+      .app__cards-container__card:nth-child(2) .front > span {
+        animation-delay: 1.33333s; }
+      .app__cards-container__card:nth-child(3) .front > span {
+        animation-delay: 2s; }
+      .app__cards-container__card:nth-child(4) .front > span {
+        animation-delay: 2.66667s; }
+      .app__cards-container__card:nth-child(5) .front > span {
+        animation-delay: 3.33333s; }
+      .app__cards-container__card:nth-child(6) .front > span {
+        animation-delay: 4s; }
+      .app__cards-container__card:nth-child(7) .front > span {
+        animation-delay: 4.66667s; }
+      .app__cards-container__card:nth-child(8) .front > span {
+        animation-delay: 5.33333s; }
+      .app__cards-container__card:nth-child(9) .front > span {
+        animation-delay: 6s; }
+      .app__cards-container__card:nth-child(10) .front > span {
+        animation-delay: 6.66667s; }
+      .app__cards-container__card:nth-child(11) .front > span {
+        animation-delay: 7.33333s; }
+      .app__cards-container__card:nth-child(12) .front > span {
+        animation-delay: 8s; }
+      .app__cards-container__card:nth-child(13) .front > span {
+        animation-delay: 8.66667s; }
+      .app__cards-container__card:nth-child(14) .front > span {
+        animation-delay: 9.33333s; }
+      .app__cards-container__card:nth-child(15) .front > span {
+        animation-delay: 10s; }
+      .app__cards-container__card:nth-child(16) .front > span {
+        animation-delay: 10.66667s; }
       .app__cards-container__card__front {
         text-align: center;
         line-height: 60px;
@@ -98,6 +134,10 @@ button {
         @media (min-width: 600px) {
           .app__cards-container__card__front {
             line-height: 120px; } }
+        .app__cards-container__card__front > span {
+          display: block;
+          font-weight: 700;
+          animation: front-cover 5s ease-in-out alternate infinite; }
         .app__cards-container__card__front:hover {
           background: rgba(255, 255, 255, 0.3); }
       .app__cards-container__card__back {
@@ -112,13 +152,19 @@ button {
             font-size: 60px; } }
         .app__cards-container__card__back > span {
           display: block;
-          animation: alive 2s ease-in-out alternate infinite; }
+          animation: back-cover 2s ease-in-out alternate infinite; }
 
-@keyframes alive {
+@keyframes back-cover {
   0% {
     transform: scale(1); }
   100% {
     transform: scale(1.2); } }
+
+@keyframes front-cover {
+  0% {
+    color: white; }
+  100% {
+    color: lightblue; } }
 
 @keyframes fade-in {
   0% {

@@ -1,187 +1,210 @@
-*, *:before, *:after{
-  box-sizing: border-box;  
-  outline: none;
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    outline: none;
 }
 
-html, body{
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 $card-size: 60px;
 $card-size-bigger-device: 120px;
 $device-bigger: 600px;
-
-[ng-cloak]{
-  opacity: 0;
+[ng-cloak] {
+    opacity: 0;
 }
 
-body {    
-  min-height: 100%;
-  margin: 0;    
-  font: 20px sans-serif;
-  background: linear-gradient(to left, dodgerblue, #345);
+body {
+    min-height: 100%;
+    margin: 0;
+    font: 20px sans-serif;
+    background: linear-gradient(to left, dodgerblue, #345);
 }
 
 @for $i from 1 through 8 {
-  .theme#{$i}{
-    background: hsla(($i - 1)*45,70%,50%,.7);
-  }
+    .theme#{$i} {
+        background: hsla(($i - 1)*45, 70%, 50%, .7);
+    }
 }
 
 button {
-  background: none;
-  border: none; 
-  padding: 0;
-  font: inherit; 
-  color: inherit;
-  border-bottom: 1px solid currentColor; 
-  cursor: pointer;
-  // Remove blink effect on mobile device button click
-  -webkit-tap-highlight-color: rgba(0,0,0,0); 
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    cursor: pointer;
+    // Remove blink effect on mobile device button click
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .app {
-  display: block;
-  opacity: 1;
-  transition: opacity 2s;  
-  color: white;
-
-  &[ng-cloak]{
-    opacity: 0;
-  }
-
-  &__hud{
-    background: rgba(0,0,0,.1);
-    text-align: center;
-    padding: 1em;
-
-    &__game-info, &__game-completed {
-      display: inline-block;
-      margin-right: 1em;
-    }  
-    &__game-status {
-      display: inline-block;
-      font-size: 70%;
-      margin-right: 1em;
-    }  
-    &__btn-restart{     
-      font-size: 70%;
+    display: block;
+    opacity: 1;
+    transition: opacity 2s;
+    color: white;
+    &[ng-cloak] {
+        opacity: 0;
     }
-  }
-
-  &__cards-container{  
-    margin: 5px auto 0;
-    max-width: 320px;
-    @media(min-width: $device-bigger){
-      max-width: $device-bigger;
+    &__hud {
+        background: rgba(0, 0, 0, .1);
+        text-align: center;
+        padding: 1em;
+        &__game-info,
+        &__game-completed {
+            display: inline-block;
+            margin-right: 1em;
+        }
+        &__game-status {
+            display: inline-block;
+            font-size: 70%;
+            margin-right: 1em;
+        }
+        &__btn-restart {
+            font-size: 70%;
+        }
     }
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;  
-
-    &__card {
-      display: inline-block;      
-      user-select: none;
-      width: $card-size;
-      height: $card-size;
-      @media(min-width: $device-bigger){
-        width: $card-size-bigger-device;
-        height: $card-size-bigger-device;
-      }
-
-      margin: 5px;
-      overflow: hidden; 
-      animation: scale-in .3s forwards;
-      -webkit-tap-highlight-color: rgba(0,0,0,0); 
-      &__front{
-        text-align: center;
-        line-height: $card-size;
-        @media(min-width: $device-bigger){
-          line-height: $card-size-bigger-device;
+    &__cards-container {
+        margin: 5px auto 0;
+        max-width: 320px;
+        @media(min-width: $device-bigger) {
+            max-width: $device-bigger;
         }
-
-        background: rgba(255,255,255,.1);
-        cursor: pointer;
-
-        &:hover{
-          background: rgba(255,255,255,.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+        &__card {
+            display: inline-block;
+            user-select: none;
+            margin: 5px;
+            overflow: hidden;
+            animation: scale-in .3s forwards;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            width: $card-size;
+            height: $card-size;
+            @media(min-width: $device-bigger) {
+                width: $card-size-bigger-device;
+                height: $card-size-bigger-device;
+            }
+            @for $i from 1 through 16 {
+                &:nth-child(#{$i}) {
+                    .front {
+                      > span{
+                        animation-delay: #{$i / 1.5}s;
+                      }                        
+                    }
+                }
+            }
+            &__front {
+                text-align: center;
+                line-height: $card-size;
+                @media(min-width: $device-bigger) {
+                    line-height: $card-size-bigger-device;
+                }
+                background: rgba(255, 255, 255, .1);
+                cursor: pointer;                
+                > span {
+                    display: block;
+                    font-weight: 700;
+                    
+                    animation: front-cover 5s ease-in-out alternate infinite;
+                }
+                &:hover {
+                    background: rgba(255, 255, 255, .3);
+                }
+            }
+            &__back {
+                text-align: center;
+                line-height: $card-size;                
+                @media(min-width: $device-bigger) {
+                    line-height: $card-size-bigger-device;
+                }
+                font-size: 40px;
+                @media(min-width: $device-bigger) {
+                    font-size: 60px;
+                }
+                > span {                    
+                    display: block;
+                    animation: back-cover 2s ease-in-out alternate infinite;
+                }
+            }
         }
-      }
-      &__back{
-        text-align: center;
-        line-height: $card-size;
-
-        @media(min-width: $device-bigger){
-          line-height: $card-size-bigger-device;
-        }
-
-        font-size: 40px;
-        @media(min-width: $device-bigger){
-          font-size: 60px;
-        }
-        > span{
-          display: block;
-          animation: alive 2s ease-in-out alternate infinite;
-        }
-      }
-    }  
-  }
+    }
 }
 
-@keyframes alive {
-  0%{
-    transform: scale(1);
-  }
-  100%{
-    transform: scale(1.2);
-  }
+@keyframes back-cover {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
 }
 
-@keyframes fade-in{
-  0% {opacity: 0;} 
-  100% {opacity: 1;} 
+@keyframes front-cover {
+    0% {
+        color: white;
+    }
+    100% {        
+        color: lightblue;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 // ngAnimate
-
 .ng-leave {
-  opacity: 1; 
-  transform: scale3d(1,1,1);  
-  transition: 2s ease-in-out;      
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    transition: 2s ease-in-out;
 }
+
 .ng-leave.ng-leave-active {
-  opacity: 0;      
-  width: 0;
-  margin: 0;
-  transform: scale3d(0,0,0);        
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    transform: scale3d(0, 0, 0);
 }
 
 .ng-enter {
-  opacity: .3;      
-  transition: 1s ease-in-out;
-  transform: scale3d(1.2,1.2,1.2);        
+    opacity: .3;
+    transition: 1s ease-in-out;
+    transform: scale3d(1.2, 1.2, 1.2);
 }
-.ng-enter.ng-enter-active, 
+
+.ng-enter.ng-enter-active,
 {
-  opacity: 1;  
-  transform: scale3d(1,1,1);        
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
 }
 
 .ng-enter-stagger {
-  transition-delay: 0.1s;
-  transition-duration: 0s;
-}
-.ng-leave-stagger {
-  transition-delay: 0.1s;
-  transition-duration: 0s;
+    transition-delay: 0.1s;
+    transition-duration: 0s;
 }
 
-@keyframes scale-in{
-  0% {
-    transform: scale3d(0,0,0);
-  }
-  100% {
-    transform: scale3d(1,1,1);
-  }  
+.ng-leave-stagger {
+    transition-delay: 0.1s;
+    transition-duration: 0s;
+}
+
+@keyframes scale-in {
+    0% {
+        transform: scale3d(0, 0, 0);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
 }
