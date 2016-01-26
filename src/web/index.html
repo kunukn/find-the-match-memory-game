@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <main class="app" ng-app="app" ng-controller="appController" ng-cloak>
+    <main class="app" ng-app="app" ng-controller="appController" ng-cloak="">
         <div class="app__hud">
             <div class="app__hud__game-info" ng-hide="gameCompleted" ng-click="titleAction()" ng-swipe-left="changeIcons()" ng-swipe-right="changeIcons()">
                 Find the match
@@ -23,7 +23,7 @@
         </div>
         <div class="app__cards-container">
             <div class="app__cards-container__card" role="button" ng-repeat="card in list" id="{{ 'card-' + card.id }}">
-                <div class="front app__cards-container__card__front" ng-click="click(card, $index)">
+                <div class="front app__cards-container__card__front" ng-click="click(card, $index)" ng-swiple-left="click(card, $index)" ng-swiple-right="click(card, $index)">
                     <span>{{card.isKnown ? "" : "?"}}</span>
                 </div>
                 <div class="back app__cards-container__card__back">

@@ -105,8 +105,8 @@
                 $scope.list = list;
                 $scope.cardsLeft = list.length;
                 $scope.gameCompleted = false;
-                $scope.titleAction = () => {
-                  icons = icons === iconFruits ? iconAnimals : iconFruits;
+                $scope.titleAction = () => {                 
+                    $scope.changeIcons();
                 };
                 $scope.changeIcons = () => {
                     icons = icons === iconFruits ? iconAnimals : iconFruits;
