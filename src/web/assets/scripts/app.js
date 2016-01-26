@@ -47,7 +47,6 @@
         function startNewGame() {
 
             shuffleArray(icons); // randomize displayed icons       
-
             $animate.enabled(false); // disable remove animation
 
             var list = [],
@@ -81,8 +80,6 @@
             $timeout(function () {
                 // Angular DOM has finished rendering
 
-                $animate.enabled(true); // re-enable animation
-
                 // Apply flip to the cards in the DOM
                 var $card = $(".app__cards-container__card");
                 $card.flip({
@@ -94,6 +91,7 @@
                 });
 
                 //showAllCards(); // debug
+                $animate.enabled(true); // re-enable animation                  
             });
         }
 
