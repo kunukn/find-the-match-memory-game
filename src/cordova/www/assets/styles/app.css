@@ -51,13 +51,10 @@ button {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent; }
 
-.app-ready {
-  opacity: 1; }
-
 .app {
   display: block;
   opacity: 0;
-  transition: opacity 1.5s;
+  transition: opacity 2s;
   color: white; }
   .app.app-ready {
     opacity: 1; }
@@ -86,86 +83,83 @@ button {
         max-width: 600px; } }
     .app__cards-container__card {
       display: inline-block;
-      user-select: none;
       margin: 5px;
       overflow: hidden;
       -webkit-tap-highlight-color: transparent;
-      animation: intro-in 1s;
+      user-select: none;
       width: 60px;
       height: 60px; }
       @media (min-width: 600px) {
         .app__cards-container__card {
           width: 120px;
           height: 120px; } }
-      .app__cards-container__card:nth-child(1) .front > span {
-        animation-delay: 0.66667s; }
-      .app__cards-container__card:nth-child(2) .front > span {
-        animation-delay: 1.33333s; }
-      .app__cards-container__card:nth-child(3) .front > span {
-        animation-delay: 2s; }
-      .app__cards-container__card:nth-child(4) .front > span {
-        animation-delay: 2.66667s; }
-      .app__cards-container__card:nth-child(5) .front > span {
-        animation-delay: 3.33333s; }
-      .app__cards-container__card:nth-child(6) .front > span {
-        animation-delay: 4s; }
-      .app__cards-container__card:nth-child(7) .front > span {
-        animation-delay: 4.66667s; }
-      .app__cards-container__card:nth-child(8) .front > span {
-        animation-delay: 5.33333s; }
-      .app__cards-container__card:nth-child(9) .front > span {
-        animation-delay: 6s; }
-      .app__cards-container__card:nth-child(10) .front > span {
-        animation-delay: 6.66667s; }
-      .app__cards-container__card:nth-child(11) .front > span {
-        animation-delay: 7.33333s; }
-      .app__cards-container__card:nth-child(12) .front > span {
-        animation-delay: 8s; }
-      .app__cards-container__card:nth-child(13) .front > span {
-        animation-delay: 8.66667s; }
-      .app__cards-container__card:nth-child(14) .front > span {
-        animation-delay: 9.33333s; }
-      .app__cards-container__card:nth-child(15) .front > span {
-        animation-delay: 10s; }
-      .app__cards-container__card:nth-child(16) .front > span {
-        animation-delay: 10.66667s; }
       .app__cards-container__card.ng-leave {
         opacity: 1;
-        transform: scale(1, 1);
+        transform: scale3d(1, 1, 1);
         transition: 2s ease-in-out; }
       .app__cards-container__card.ng-leave.ng-leave-active {
-        opacity: .1;
+        opacity: 0;
         width: 0;
         margin: 0;
-        transform: scale(0, 0); }
+        transform: scale3d(0, 0, 0); }
+      .app__cards-container__card.ng-enter {
+        transition: 1s ease-in-out;
+        opacity: 0; }
+      .app__cards-container__card.ng-enter.ng-enter-active {
+        opacity: 1; }
+      .app__cards-container__card:nth-child(1) .front {
+        animation-delay: 0.66667s; }
+      .app__cards-container__card:nth-child(2) .front {
+        animation-delay: 1.33333s; }
+      .app__cards-container__card:nth-child(3) .front {
+        animation-delay: 2s; }
+      .app__cards-container__card:nth-child(4) .front {
+        animation-delay: 2.66667s; }
+      .app__cards-container__card:nth-child(5) .front {
+        animation-delay: 3.33333s; }
+      .app__cards-container__card:nth-child(6) .front {
+        animation-delay: 4s; }
+      .app__cards-container__card:nth-child(7) .front {
+        animation-delay: 4.66667s; }
+      .app__cards-container__card:nth-child(8) .front {
+        animation-delay: 5.33333s; }
+      .app__cards-container__card:nth-child(9) .front {
+        animation-delay: 6s; }
+      .app__cards-container__card:nth-child(10) .front {
+        animation-delay: 6.66667s; }
+      .app__cards-container__card:nth-child(11) .front {
+        animation-delay: 7.33333s; }
+      .app__cards-container__card:nth-child(12) .front {
+        animation-delay: 8s; }
+      .app__cards-container__card:nth-child(13) .front {
+        animation-delay: 8.66667s; }
+      .app__cards-container__card:nth-child(14) .front {
+        animation-delay: 9.33333s; }
+      .app__cards-container__card:nth-child(15) .front {
+        animation-delay: 10s; }
+      .app__cards-container__card:nth-child(16) .front {
+        animation-delay: 10.66667s; }
       .app__cards-container__card__front {
         text-align: center;
         line-height: 60px;
         background: rgba(255, 255, 255, 0.1);
-        cursor: pointer; }
+        cursor: pointer;
+        animation: front-cover 2s ease-in-out alternate infinite; }
         @media (min-width: 600px) {
           .app__cards-container__card__front {
             line-height: 120px; } }
-        .app__cards-container__card__front > span {
-          display: block;
-          font-weight: 700;
-          animation: front-cover 5s ease-in-out alternate infinite; }
         .app__cards-container__card__front:hover {
           background: rgba(255, 255, 255, 0.3); }
       .app__cards-container__card__back {
-        transition: opacity 1s;
         text-align: center;
         line-height: 60px;
-        visibility: hidden;
         font-size: 40px; }
         @media (min-width: 600px) {
           .app__cards-container__card__back {
             line-height: 120px; } }
         @media (min-width: 600px) {
           .app__cards-container__card__back {
-            font-size: 80px; } }
-        .app__cards-container__card__back.app-ready {
-          visibility: visible; }
+            font-size: 60px; } }
         .app__cards-container__card__back > span {
           display: block;
           animation: back-cover 2s ease-in-out alternate infinite; }
@@ -177,10 +171,14 @@ button {
     transform: scale(1.2); } }
 
 @keyframes front-cover {
+  0% { }
+  100% { } }
+
+@keyframes fade-in {
   0% {
-    color: white; }
+    opacity: 0; }
   100% {
-    color: lightblue; } }
+    opacity: 1; } }
 
 .ng-enter-stagger {
   transition-delay: 0.1s;
@@ -189,9 +187,3 @@ button {
 .ng-leave-stagger {
   transition-delay: 0.1s;
   transition-duration: 0s; }
-
-@keyframes intro-in {
-  0% {
-    opacity: .5; }
-  100% {
-    opacity: 1; } }

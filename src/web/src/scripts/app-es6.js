@@ -1,7 +1,4 @@
-;
-
-(() => {
-
+; {
     /**
      * Randomize array element order in-place.
      * Durstenfeld shuffle algorithm.   
@@ -22,41 +19,48 @@
 
     // http://unicode.org/emoji/charts/full-emoji-list.html
     const iconAnimals = [
-        '\uD83D\uDC35',
-        '\uD83D\uDC36',
-        '\uD83D\uDC3A',
-        '\uD83D\uDC31',
-        '\uD83D\uDC2F',
-        '\uD83D\uDC34',
-        '\uD83D\uDC2E',
-        '\uD83D\uDC37',
-        '\uD83D\uDC17',
-        '\uD83D\uDC2D',
-        '\uD83D\uDC39',
-        '\uD83D\uDC30',
-        '\uD83D\uDC3B',
-        '\uD83D\uDC28',
-        '\uD83D\uDC3C',
-        '\uD83D\uDC14',
-        '\uD83D\uDC24',
-        '\uD83D\uDC26',
-        '\uD83D\uDC27',
-        '\uD83D\uDC38'
+        '🐵',
+        '🐶',
+        '🐺',
+        '🐱',
+        '🐯',
+        '🐴',
+        '🐮',
+        '🐷',
+        '🐗',
+        '🐭',
+        '🐹',
+        '🐰',
+        '🐻',
+        '🐨',
+        '🐼',
+        '🐔',
+        '🐤',
+        '🐦',
+        '🐧',
+        '🐸',
+        //'🐢   ',
+        //'🐍',
+        //'🐳',
+        //'🐬',
+        //'🐠',
+        //'🐙',
     ];
     const iconFruits = [
-        '\uD83C\uDF47',
-        '\uD83C\uDF48',
-        '\uD83C\uDF49',
-        '\uD83C\uDF4A',
-        '\uD83C\uDF4B',
-        '\uD83C\uDF4C',
-        '\uD83C\uDF4D',
-        '\uD83C\uDF4E',
-        '\uD83C\uDF4F',
-        '\uD83C\uDF51',
-        '\uD83C\uDF52',
-        '\uD83C\uDF53'
+        '🍇',
+        '🍈',
+        '🍉',
+        '🍊',
+        '🍋',
+        '🍌',
+        '🍍',
+        '🍎',
+        '🍏',
+        '🍑',
+        '🍒',
+        '🍓',
     ];
+
     let icons = iconAnimals;
 
     let app = angular
@@ -67,7 +71,6 @@
             // This is a prototype, everything is in this controller.
             // For cleaner code you probably would refactor stuff out from here.
 
-            let $app = $(".app");
             $timeout(() => {
                 // Angular DOM has finished rendering
                 $scope.appReady = true;
@@ -81,11 +84,14 @@
 
             function startNewGame() {
 
-                $animate.enabled(false); // disable remove animation
-                $scope.appReady = false;
-                
                 shuffleArray(icons); // randomize displayed icons        
-                
+
+                $animate.enabled(false); // disable remove animation
+
+                $scope.list = [];
+
+                //$animate.enabled(true); // re-enable animation
+
                 let list = [],
                     cardCount = 16;
                 for (var i = 1; i <= cardCount; i++) {
@@ -99,18 +105,15 @@
                     });
                 }
 
-
                 shuffleArray(list); // randomize card on the board
 
                 // Update state
                 selected1 = selected2 = null;
                 $scope.clickCount = 0;
-                $scope.list = list;
+
                 $scope.cardsLeft = list.length;
                 $scope.gameCompleted = false;
-                $scope.titleAction = () => {                 
-                    $scope.changeIcons();
-                };
+                $scope.titleAction = () => {};
                 $scope.changeIcons = () => {
                     icons = icons === iconFruits ? iconAnimals : iconFruits;
                 };
@@ -118,23 +121,25 @@
                 $timeout(() => {
                     // Angular DOM has finished rendering
 
-                    // Apply flip to the cards in the DOM                    
-                    let $card = $app.find(".app__cards-container__card");
-                    $card.flip({
-                        axis: 'y',
-                        trigger: 'manual',
-                        reverse: true
-                    }, () => {
-                        // Callback
-                    });
+                    $animate.enabled(true); // re-enable animation
 
-                                    
+                    $scope.list = list;
+
                     $timeout(() => {
-                        $scope.appReady = true;  // wait until flip is done                       
-                    }, 200);
+                        // Angular DOM has finished rendering
 
-                    //showAllCards(); // debug
-                    $animate.enabled(true); // re-enable animation                                    
+                        // Apply flip to the cards in the DOM
+                        let $card = $(".app__cards-container__card");
+                        $card.flip({
+                            axis: 'y',
+                            trigger: 'manual',
+                            reverse: true
+                        }, () => {
+                            //callback
+                        });
+
+                        //showAllCards(); // debug
+                    });
                 });
             }
 
@@ -200,5 +205,4 @@
 
             startNewGame();
         });
-
-})();
+};
